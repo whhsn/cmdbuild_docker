@@ -15,14 +15,14 @@ services:
         restart: always
 
     openmaint_app:
-        image: afcarvalho1991/cmdbuild:om-2.3-3.4.1-d
+        image: itmicus/cmdbuild:om-2.3-3.4.1-d
         container_name: openmaint_app
         links:
            - openmaint_db
         depends_on:
            - openmaint_db
         ports:
-            - 8090:8080
+            - 8060:8080
         restart: always
         volumes:
             - openmaint-tomcat:/usr/local/tomcat
@@ -32,7 +32,7 @@ services:
             - POSTGRES_PORT=5432
             - POSTGRES_HOST=openmaint_db
             - POSTGRES_DB=openmaint
-            - CMDBUILD_DUMP=demo.dump.xz
+            - CMDBUILD_DUMP=empty.dump.xz
             - JAVA_OPTS=-Xmx4000m -Xms2000m
         # mem_limit: 4000m
         # mem_reservation: 2000m
